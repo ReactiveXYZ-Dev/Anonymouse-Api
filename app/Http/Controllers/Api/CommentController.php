@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\{Post, Comment};
 use Illuminate\Http\Request;
+use App\Jobs\SendPushNotification;
 use App\Http\Controllers\Controller;
-use App\Notifications\PushNotification;
 
 class CommentController extends Controller
 {
@@ -61,12 +61,13 @@ class CommentController extends Controller
     			'message' => 'Comment created!'
     		];
             // notify the author of the post
-            $post->author()
-                 ->first()
-                 ->notify(
-                    (new PushNotification("New Comment", $created->content))
-                        ->onQueue('push-notification')
-                );
+            dispatch(
+                (new SendPushNotification(
+                    $post->author()->first(),
+                    "New comment",
+                    $created->content)
+                )->onQueue('push-notification')
+            );
 
     	} else {
     		$response = [
@@ -116,12 +117,13 @@ class CommentController extends Controller
     			'message' => 'Reply created!'
     		];
             // notify the author of the reply
-            $comment->author()
-                    ->first()
-                    ->notify(
-                        (new PushNotification("New Reply", $created->content))
-                            ->onQueue('push-notification')
-                    );
+            dispatch(
+                (new SendPushNotification(
+                    $post->author()->first(),
+                    "New reply",
+                    $created->content)
+                )->onQueue('push-notification')
+            );
     	} else {
     		$response = [
     			'status' => 'error',

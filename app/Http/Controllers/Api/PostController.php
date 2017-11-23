@@ -57,9 +57,12 @@ class PostController extends Controller
             User::whereNotIn('id', [$user->id])
                 ->get()
                 ->each(function($user) use (&$created) {
-                    $user->notify(
-                        (new PushNotification("New Post", $created->content))
-                            ->onQueue('push-notification')
+                    dispatch(
+                        (new SendPushNotification(
+                            $post->author()->first(),
+                            "New post",
+                            $created->content)
+                        )->onQueue('push-notification')
                     );
                 });
 

@@ -1,0 +1,47 @@
+{
+    "name": "lnc-dev/apn",
+    "description": "Apple APN Push Notification Channel",
+    "homepage": "https://github.com/laravel-notification-channels/apn",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fruitcake",
+            "email": "info@fruitcake.nl",
+            "homepage": "https://fruitcake.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "illuminate/events": "^5.1|^5.2|^5.3",
+        "illuminate/notifications": "^5.3",
+        "illuminate/support": "^5.1|^5.2|^5.3",
+        "illuminate/queue": "^5.1|^5.2|^5.3",
+        "zendframework/zendservice-apple-apns": "^1.2"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.5",
+        "phpunit/phpunit": "4.*",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\Apn\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\Apn\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.2-dev"
+        }
+    }
+}

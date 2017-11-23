@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "910d56b6c7f7f3c8db5336765f65ee8e",
-    "content-hash": "41766e0713afd582ae6945afd4143f55",
+    "hash": "7649e0145f825f2b75c1d3187b6f3000",
+    "content-hash": "fc2d0ac742e14900d3dcefc5138cb43f",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -408,54 +408,6 @@
             "time": "2015-04-20 18:58:01"
         },
         {
-            "name": "laravel-notification-channels/apn",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-notification-channels/apn.git",
-                "reference": "edcf6e2b6ded61f1ca77637a1290c20d69b5c301"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/apn/zipball/edcf6e2b6ded61f1ca77637a1290c20d69b5c301",
-                "reference": "edcf6e2b6ded61f1ca77637a1290c20d69b5c301",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/events": "^5.1|^5.2|^5.3",
-                "illuminate/notifications": "^5.3",
-                "illuminate/queue": "^5.1|^5.2|^5.3",
-                "illuminate/support": "^5.1|^5.2|^5.3",
-                "php": ">=5.5",
-                "zendframework/zendservice-apple-apns": "^1.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "4.*",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NotificationChannels\\Apn\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fruitcake",
-                    "email": "info@fruitcake.nl",
-                    "homepage": "https://fruitcake.nl"
-                }
-            ],
-            "description": "Apple APN Push Notification Channel",
-            "homepage": "https://github.com/laravel-notification-channels/apn",
-            "time": "2016-10-12 06:54:01"
-        },
-        {
             "name": "laravel/framework",
             "version": "v5.5.21",
             "source": {
@@ -733,6 +685,62 @@
                 "storage"
             ],
             "time": "2017-08-06 17:41:04"
+        },
+        {
+            "name": "lnc-dev/apn",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./self-vendor/lnc-dev/apn",
+                "reference": "59fa7addf319523dfaff51aab5a816a81c2f01a9",
+                "shasum": null
+            },
+            "require": {
+                "illuminate/events": "^5.1|^5.2|^5.3",
+                "illuminate/notifications": "^5.3",
+                "illuminate/queue": "^5.1|^5.2|^5.3",
+                "illuminate/support": "^5.1|^5.2|^5.3",
+                "php": ">=5.5",
+                "zendframework/zendservice-apple-apns": "^1.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Apn\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "NotificationChannels\\Apn\\Test\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fruitcake",
+                    "email": "info@fruitcake.nl",
+                    "homepage": "https://fruitcake.nl"
+                }
+            ],
+            "description": "Apple APN Push Notification Channel",
+            "homepage": "https://github.com/laravel-notification-channels/apn"
         },
         {
             "name": "monolog/monolog",
@@ -2412,16 +2420,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.13",
+            "version": "2.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "9f640a4f129e57d3537887f840380109a4dd182b"
+                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/9f640a4f129e57d3537887f840380109a4dd182b",
-                "reference": "9f640a4f129e57d3537887f840380109a4dd182b",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
+                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
                 "shasum": ""
             },
             "require": {
@@ -2469,7 +2477,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2017-11-17 08:15:51"
+            "time": "2017-11-23 18:22:44"
         },
         {
             "name": "fzaninotto/faker",
@@ -4032,7 +4040,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lnc-dev/apn": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

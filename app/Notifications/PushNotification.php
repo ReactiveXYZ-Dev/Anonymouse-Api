@@ -4,25 +4,23 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use NotificationChannels\Apn\{ApnChannel, ApnMessage};
 
-class PushNotification extends Notification implements ShouldQueue
+class PushNotification extends Notification
 {
-    use Queueable;
-
     // notification data
-    private $title, $body;
+    private $title, $body, $contentAvailable = null;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($title, $body)
+    public function __construct($title, $body, $contentAvailable = null)
     {
         $this->title = $title;
         $this->body = $body;
+        $this->contentAvailable = $contentAvailable;
     }
 
     /**
@@ -47,7 +45,8 @@ class PushNotification extends Notification implements ShouldQueue
         return ApnMessage::create()
                     ->badge(1)
                     ->title($this->title)
-                    ->body($this->body);
+                    ->body($this->body)
+                    ->contentAvailable($this->contentAvailable);
     }
 
     /**
