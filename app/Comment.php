@@ -12,7 +12,7 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
+        'content', 'user_id'
     ];
 
     /**
@@ -29,7 +29,7 @@ class Comment extends Model
  	 */
  	public function author()
  	{
- 		return $this->belongsTo('App\User');
+ 		return $this->belongsTo('App\User', 'user_id');
  	}
 
  	public function parent()

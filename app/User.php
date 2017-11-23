@@ -39,4 +39,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
+
+    /**
+     * Notifications
+     */
+    // apn
+    public function routeNotificationForApn()
+    {
+        return $this->apn_reg_id;
+    }
 }

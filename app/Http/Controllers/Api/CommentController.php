@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\{Post, Comment};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\PushNotification;
 
 class CommentController extends Controller
 {
@@ -49,7 +50,8 @@ class CommentController extends Controller
     	}
 
     	$created = $post->comments()->create([
-    		'content' => $request->content
+    		'content' => $request->content,
+            'user_id' => $request->user()->id
     	]);
 
     	$response = [];
@@ -58,6 +60,14 @@ class CommentController extends Controller
     			'status' => 'success',
     			'message' => 'Comment created!'
     		];
+            // notify the author of the post
+            $post->author()
+                 ->first()
+                 ->notify(
+                    (new PushNotification("New Comment", $created->content))
+                        ->onQueue('push-notification')
+                );
+
     	} else {
     		$response = [
     			'status' => 'error',
@@ -105,6 +115,13 @@ class CommentController extends Controller
     			'status' => 'success',
     			'message' => 'Reply created!'
     		];
+            // notify the author of the reply
+            $comment->author()
+                    ->first()
+                    ->notify(
+                        (new PushNotification("New Reply", $created->content))
+                            ->onQueue('push-notification')
+                    );
     	} else {
     		$response = [
     			'status' => 'error',

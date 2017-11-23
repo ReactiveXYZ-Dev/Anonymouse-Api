@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Post;
 use Carbon\Carbon;
+use App\{Post, User};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\PushNotification;
@@ -53,6 +53,16 @@ class PostController extends Controller
     			'status' => 'success',
     			'message' => 'Post created!'
     		];
+            // notify everyone besides the sender
+            User::whereNotIn('id', [$user->id])
+                ->get()
+                ->each(function($user) use (&$created) {
+                    $user->notify(
+                        (new PushNotification("New Post", $created->content))
+                            ->onQueue('push-notification')
+                    );
+                });
+
     	} else {
     		$response = [
     			'status' => 'error',

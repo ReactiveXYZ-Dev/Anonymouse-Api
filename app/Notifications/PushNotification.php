@@ -59,7 +59,8 @@ class PushNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            'title' => $this->title,
+            'body' => $this->body,
         ];
     }
 }
