@@ -6,6 +6,7 @@ use App\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\PushNotification;
 
 class PostController extends Controller
 {

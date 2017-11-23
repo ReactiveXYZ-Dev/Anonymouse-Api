@@ -53,6 +53,13 @@ return [
             'driver' => 'null',
         ],
 
+        // ================= Notification =================
+        'apn' => [
+            'environment' => NotificationChannels\Apn\ApnChannel::SANDBOX,
+            'certificate' => storage_path('app/private/apn_dev.pem'), 
+            'pass_phrase' => null,
+        ]
+
     ],
 
 ];
