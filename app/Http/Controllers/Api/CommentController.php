@@ -29,7 +29,7 @@ class CommentController extends Controller
     	return response()->json([
     		'status' => 'success',
     		'message' => 'Fetched all comments',
-    		'data' => $post->comments()->with('replies')
+    		'data' => $post->comments()->with('replies')->get()
     	]);
     }
 
