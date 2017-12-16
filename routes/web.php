@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-	// for all web requests, simply redirect to the main app intro website
+// show the new site UI!
+Route::get('/', function() {
+	return view('index');
+});
+
+// fall back to the old site UI
+Route::get('/legacy', function () {
     return redirect('http://anonymouseapp.org/');
 });
