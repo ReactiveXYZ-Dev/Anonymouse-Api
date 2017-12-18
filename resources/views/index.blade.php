@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<title>Anonymouse. Secure. Social.</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
@@ -130,6 +131,7 @@
 						<div class="control">
 							<input id="signup-input" class="input" type="text" placeholder="Email address">
 						</div>
+						<p style="color: red; display: none" id="message"></p>
 					</div>
 					<div class="field is-grouped  is-pulled-right">
 						<div class="control">
@@ -204,7 +206,7 @@
 				<div class="content">
 					<div class="columns">
 						<div class="column">
-							<ul class="is-pulled-left" style="list-style: none; text-decoration: none; line-height: 1.5; font-weight: 600; margin-top: 0; text-align: center">
+							<ul class="is-pulled-left" style="list-style: none; text-decoration: none; line-height: 1.5; font-weight: 600; margin-top: 0; text-align: center; margin-left: 0">
 								<li class="bottom-bordered"><a href="#" class="dark-gray">Learn about our technology</a></li>
 								<li class="bottom-bordered"><a href="#" class="dark-gray">Press release and media</a></li>
 							</ul>
@@ -219,5 +221,30 @@
 				</div>
 			</div>
 		</footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		// inject csrf token
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+		// new signup
+		$('#signup-btn').click(function(e) {
+			$.ajax({
+				method: "POST",
+				url: "/subscribe",
+				data: {
+					'email': $('#signup-input').val()
+				}
+			}).done(function(res) {
+				$('#message').text(res['message']);
+			}).fail(function(res) {
+				$('#message').text('Failed! Please try again later!');
+			});
+			$('#message').show();
+		});
+	</script>
 	</body>
 </html>

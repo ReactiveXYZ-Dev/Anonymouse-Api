@@ -16,6 +16,10 @@ Route::get('/', function() {
 	return view('index');
 });
 
+// subscription action
+Route::post('/subscribe', 'SubscriptionController@create');
+Route::get('/download-subscriptions', 'SubscriptionController@download');
+
 // fall back to the old site UI
 Route::get('/legacy', function () {
     return redirect('http://anonymouseapp.org/');
