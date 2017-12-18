@@ -53,7 +53,7 @@ class SubscriptionController extends Controller
     		$csv->insertAll($subscriptions->toArray());
     	});
 
-    	$csv->output((string)time()+'.csv');
+    	$csv->output(strval(time())+'.csv');
     	exit;
     }
 
