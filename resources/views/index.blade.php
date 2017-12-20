@@ -35,8 +35,8 @@
 			}
 			.slogan-title {
 				font-weight: 1000;
-				margin-left: 10%;
-				font-size: 40px;
+				margin-left: 20%;
+				font-size: 56px;
 				font-family: 'Roboto Slab', serif;
 				letter-spacing: 2px;
 				line-height: 1;
@@ -44,14 +44,14 @@
 			}
 			.slogan-subtitle {
 				margin-top: 20px;
-				margin-left: 10%;
+				margin-left: 20%;
 				font-family: 'Work Sans', sans-serif;
-				font-size: 11px;
+				font-size: 18px;
 				width: 35%;
 				font-weight: 600;
 			}
 			.form {
-				margin-left: 10%;
+				margin-left: 20%;
 				width: 35%;
 				margin-top: 20px;
 			}
@@ -59,7 +59,7 @@
 				border-bottom: 1px solid #5B5E60
 			}
 			#signup-input {
-				font-size: 12px;
+				font-size: 18px;
 			}
 			#signup-btn {
 				font-family: 'Work Sans', sans-serif;
@@ -70,11 +70,11 @@
 				position: absolute;
 				width: 50%;
 				float: right;
-				margin-left: 50%;
-				max-width: 512px;
+				margin-left: 45%;
+				max-width: 600px;
 			}
 			#features {
-				margin-top: 20%;
+				margin-top: 10%;
 			}
 			#features .columns {
 				margin: 0 10% 0 10%;
